@@ -13,6 +13,8 @@
     "start": "webpack-dev-server --hot --mode development"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.11.5",
+    "dotenv": "^8.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

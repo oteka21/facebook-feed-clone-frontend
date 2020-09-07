@@ -1,11 +1,14 @@
 import React, { Fragment } from 'react'
 import { GlobalStyles } from './layout.styles'
+import PropTypes from 'prop-types'
 
-const Layout = ({ children }) => {
+export const Layout = ({ children }) => {
   return <Fragment>
     <GlobalStyles />
     {children}
   </Fragment>
 }
 
-export default Layout
+Layout.propTypes = {
+  children: PropTypes.element
+}

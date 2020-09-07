@@ -10,6 +10,10 @@ export const GlobalStyles = createGlobalStyle`
     }
     body {
       margin: 0;
+      background: #18191A;
+    }
+    *{
+      color: #fff;
     }
     main {
       display: block;

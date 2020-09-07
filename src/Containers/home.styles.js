@@ -8,4 +8,5 @@ export const Container = styled.section`
 export const Feed = styled.div`
   max-width: 680px;
   margin: 0 auto;
+  padding: 0 10px;
 `
