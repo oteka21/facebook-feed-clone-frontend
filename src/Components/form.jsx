@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form as Container, InputContainer } from './form.styles'
 import PropTypes from 'prop-types'
-import { Avatar, Textarea, Button } from './global.styles'
+import { Textarea, Button } from './global.styles'
 import { DropdownSelect } from '../Components'
 
 export const Form = ({ handleSubmit, user }) => {
@@ -23,12 +23,9 @@ export const Form = ({ handleSubmit, user }) => {
 
   return <Container onSubmit={onSubmit}>
     <InputContainer>
-      <div style={{ position: 'absolute', right: '10px', top: '10px' }}>
-        <DropdownSelect onChange={handleSelectChange} />
-      </div>
-      <Avatar src="https://icon-library.com/images/facebook-user-icon/facebook-user-icon-27.jpg" alt={`avatar image for ${user} user`}/>
       <Textarea value={value} onChange={event => setValue(event.target.value)} placeholder="¿Que estas pensando?" />
     </InputContainer>
+    <DropdownSelect onChange={handleSelectChange} />
     <Button>Publicar</Button>
   </Container>
 }

@@ -4,6 +4,7 @@ export const Container = styled.div`
   position: relative;
   display: inline-block;
   width: 100px;
+  z-index: ${({ open }) => open ? '101' : 'initial'};
 `
 
 export const Selected = styled.div`
@@ -12,18 +13,19 @@ export const Selected = styled.div`
   padding: 5px 6px;
   border-radius: ${({ open }) => open ? '3px 3px 0 0' : '3px'};
   position: relative;
+  margin-top: 10px;
 
   &:after{
     content: "";
     width: 0;
     height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
     
-    border-top: 8px solid #fff;
+    border-top: 5px solid #fff;
     position: absolute;
-    right: 8px;
-    top: calc(50% - 5px);
+    right: 15px;
+    top: calc(50% - 2px);
     transform: ${({ open }) => open ? 'rotate(180deg)' : ''};
   }
 
@@ -46,4 +48,14 @@ export const List = styled.ul`
   & li:last-child{
     border-radius: ${({ open }) => open ? '0 0 3px 3px' : '0'};
   }
+`
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(0,0,0, 0.6);
+  z-index: 100;
 `

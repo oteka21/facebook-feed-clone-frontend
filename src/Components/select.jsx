@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React, { Fragment } from 'react'
 import { useSelect } from 'downshift'
-import { Container, Selected, List } from './select.styles'
+import { Container, Selected, List, Overlay } from './select.styles'
 import PropTypes from 'prop-types'
 
 const items = [
@@ -14,12 +14,8 @@ const items = [
   }
 ]
 
-const initialSelectedItem = {
-  value: 'public',
-  text: 'Público'
-}
-
-export function DropdownSelect ({ onChange }) {
+export function DropdownSelect ({ onChange, defaultValue = 'public' }) {
+  const initialSelectedItem = defaultValue.toLocaleLowerCase() === 'public' ? items[0] : items[1]
   const {
     isOpen,
     selectedItem,
@@ -30,12 +26,13 @@ export function DropdownSelect ({ onChange }) {
   } = useSelect({ items, initialSelectedItem, onSelectedItemChange: onChange })
 
   return (
-    <Container>
-      <Selected type="button" {...getToggleButtonProps()} open={isOpen}>
-        {selectedItem ? selectedItem.text : 'Element'}
-      </Selected>
-      <List {...getMenuProps()} open={isOpen}>
-        {isOpen &&
+    <Fragment>
+      <Container open={isOpen}>
+        <Selected type="button" {...getToggleButtonProps()} open={isOpen}>
+          {selectedItem ? selectedItem.text : 'Element'}
+        </Selected>
+        <List {...getMenuProps()} open={isOpen}>
+          {isOpen &&
           items.map((item, index) => (
             <li
               style={
@@ -47,11 +44,16 @@ export function DropdownSelect ({ onChange }) {
               {item.text}
             </li>
           ))}
-      </List>
-    </Container>
+        </List>
+      </Container>
+      {
+        isOpen && <Overlay />
+      }
+    </Fragment>
   )
 }
 
 DropdownSelect.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  defaultValue: PropTypes.string
 }

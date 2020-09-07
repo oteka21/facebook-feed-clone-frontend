@@ -47,8 +47,14 @@ const config = {
     new HtmlWebpackPlugin({
       inject: true,
       template: require('html-webpack-template'),
-      title: 'Facebook',
-      appMountId: 'app'
+      title: 'Reactibook',
+      appMountId: 'app',
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1.0'
+        }
+      ]
     })
   ],
   optimization: {

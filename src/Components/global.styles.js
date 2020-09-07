@@ -13,10 +13,10 @@ export const Textarea = styled.textarea`
   height: 100px;
   border: 0;
   width: 100%;
-  margin-left: 20px;
   outline: none;
   padding: 10px;
   resize: none;
+  box-sizing: border-box;
 `
 
 export const Button = styled.button`
@@ -29,6 +29,7 @@ export const Button = styled.button`
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  outline: none;
 
   &:Hover{
     background: #3A3B3C;

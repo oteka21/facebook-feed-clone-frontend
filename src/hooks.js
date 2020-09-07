@@ -27,10 +27,19 @@ export const useData = () => {
     return newPost
   }
 
+  const deletePost = async (id) => {
+    setLoading(true)
+    const response = await fetch(`${BASE_URL}/post/${id}`, { method: 'DELETE' })
+    const deletedPost = response.json()
+    setLoading(false)
+    return deletedPost
+  }
+
   return {
     error,
     loading,
     getPosts,
-    savePost
+    savePost,
+    deletePost
   }
 }
