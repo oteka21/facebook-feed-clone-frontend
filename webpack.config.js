@@ -47,6 +47,7 @@ const config = {
     new HtmlWebpackPlugin({
       inject: true,
       template: require('html-webpack-template'),
+      title: 'Facebook',
       appMountId: 'app'
     })
   ],

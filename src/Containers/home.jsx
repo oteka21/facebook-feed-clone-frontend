@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Feed } from './home.styles'
-import { Layout, Form } from '../Components'
+import { Layout, Form, DropdownSelect } from '../Components'
 import { useData } from '../hooks'
 
 const Home = () => {
@@ -13,10 +13,12 @@ const Home = () => {
       .then(data => setList(data))
   }, [filter])
 
-  const handleSubmit = async (value) => {
-    const newPost = await savePost({
-      content: value
-    })
+  const handleChangeSelect = ({ selectedItem }) => {
+    setFilter(selectedItem.value)
+  }
+
+  const handleSubmit = async (data) => {
+    const newPost = await savePost(data)
     setList(prev => ([newPost, ...prev]))
   }
 
@@ -24,7 +26,9 @@ const Home = () => {
     <Container>
       <Feed>
         <h1>Facebook Feed</h1>
+        {/* {loading && <p>Loading...</p>} */}
         <Form handleSubmit={handleSubmit}/>
+        <DropdownSelect onChange={handleChangeSelect} />
         {list.map(item => <p key={item._id}>{item.content}</p>)}
       </Feed>
     </Container>

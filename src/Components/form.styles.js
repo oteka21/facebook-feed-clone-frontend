@@ -8,4 +8,5 @@ export const Form = styled.form`
 
 export const InputContainer = styled.div`
   display: flex;
+  position: relative;
 `
