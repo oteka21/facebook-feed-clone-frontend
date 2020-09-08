@@ -13,7 +13,6 @@ const Home = () => {
     if (error) {
       Swal.fire({
         text: 'Tenemos problemas para recibir tu solicitud, por favor intentalo más tarde!',
-        title: 'Oops...',
         icon: 'error'
       })
     }
@@ -32,6 +31,12 @@ const Home = () => {
   }
 
   const handleSubmit = async (data) => {
+    if (data.content === '') {
+      return Swal.fire({
+        text: 'Por favor completa el formulario!',
+        icon: 'error'
+      })
+    }
     const newPost = await savePost(data)
 
     setList(prev => ({ [newPost._id]: newPost, ...prev }))
