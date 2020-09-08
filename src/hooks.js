@@ -1,5 +1,5 @@
 import { useState } from 'react'
-const BASE_URL = process.env.BASE_URL || 'http://localhost:8080'
+const BASE_URL = process.env.BASE_URL || 'https://facebook-feed-clone-v1.oteka21.vercel.app'
 
 export const useData = () => {
   const [error, setError] = useState('')
@@ -34,12 +34,26 @@ export const useData = () => {
     setLoading(false)
     return deletedPost
   }
+  const editPost = async ({ id, data }) => {
+    setLoading(true)
+    const response = await fetch(`${BASE_URL}/post/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const editedPost = response.json()
+    setLoading(false)
+    return editedPost
+  }
 
   return {
     error,
     loading,
     getPosts,
     savePost,
-    deletePost
+    deletePost,
+    editPost
   }
 }

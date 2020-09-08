@@ -13,3 +13,10 @@ margin: 20px 0;
 export const Actions = styled.div`
   display: flex;
 `
+
+export const Time = styled.span`
+  display: inline-block;
+  color: #AAACB0;
+  font-size: 10px;
+  margin: 5px 0;
+`

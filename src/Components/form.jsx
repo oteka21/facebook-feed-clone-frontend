@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Textarea, Button } from './global.styles'
 import { DropdownSelect } from '../Components'
 
-export const Form = ({ handleSubmit, user }) => {
+export const Form = ({ handleSubmit }) => {
   const [value, setValue] = useState('')
   const [audience, setAudience] = useState('public')
 
@@ -31,6 +31,5 @@ export const Form = ({ handleSubmit, user }) => {
 }
 
 Form.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  user: PropTypes.string
+  handleSubmit: PropTypes.func.isRequired
 }

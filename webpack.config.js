@@ -48,7 +48,7 @@ const config = {
       inject: true,
       template: require('html-webpack-template'),
       title: 'Reactibook',
-      appMountId: 'app',
+      appMountIds: ['app', 'modal'],
       meta: [
         {
           name: 'viewport',
